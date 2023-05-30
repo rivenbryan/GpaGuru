@@ -1,10 +1,8 @@
 import { Text, Box } from '@mantine/core'
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import StudentCourseDetails from './StudentCourseDetails'
 
-type Props = {}
-
-export default function GpaCalculatorSection({ }: Props) {
+export default function GpaCalculatorSection() {
     return (
         <Box sx={{ paddingTop: "10px" }}>
             <Text>Fill up your Course name, Grade and Credits.</Text>

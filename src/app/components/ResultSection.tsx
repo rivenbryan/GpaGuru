@@ -1,9 +1,12 @@
 import { Box, Input, SimpleGrid, Text } from '@mantine/core'
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useGPAContext } from '../contexts/gpaContext';
 
 
 export default function ResultSection() {
+    const { gpa}  = useGPAContext();
+
+   
     return (
         <Box sx={{ width: "500px", paddingTop: "10px" }}>
             <Text fz="lg" fw={600}>Result: </Text>
@@ -11,6 +14,7 @@ export default function ResultSection() {
                 <Text>GPA: </Text>
                 <Text>CGPA: </Text>
                 <Input
+                    value={gpa}
                     disabled
                 />
                 <Input
