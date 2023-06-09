@@ -1,13 +1,10 @@
 "use client";
 
-import { Button, Container } from "@mantine/core";
+import { Container } from "@mantine/core";
 import Hero from "./components/Hero";
 import SchoolInformationSection from "./components/SchoolInformationSection";
 import GpaCalculatorSection from "./components/GpaCalculatorSection";
 import ResultSection from "./components/ResultSection";
-import { useState } from "react";
-import { useGPAContext } from "./contexts/gpaContext";
-
 
 export default function Home() {
 

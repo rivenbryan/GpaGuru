@@ -6,7 +6,8 @@ enum typesOfSchool {
 
 
 type CourseGradeCreditType = {
+    id: number,
     courseName: string,
     grade: string,
-    credit: number | '',
+    credit: number,
 }

@@ -6,15 +6,15 @@ import { useGPAContext } from '../contexts/gpaContext'
 
 type InputField = 'courseName' | 'grade' | 'credit';
 
-export default function StudentDetail() {
-    const {setArrayOfCourseGradeCredits }: any = useGPAContext();
+export default function StudentDetail({ index }: any) {
+    const { setArrayOfCourseGradeCredits }: any = useGPAContext();
     const [courseName, setCourseName] = useState<string>("");
     const [grade, setGrade] = useState<string>("");
     const [credit, setCredit] = useState<number | ''>(0);
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>,
         inputField: InputField) => {
-        
+
         if (inputField === 'courseName') {
             setCourseName(event.target.value);
         } else if (inputField === 'grade') {
@@ -28,20 +28,27 @@ export default function StudentDetail() {
         const addCourseIntoArray = () => {
             setArrayOfCourseGradeCredits((prevValue: CourseGradeCreditType[]) => {
                 const CourseGradeCredits: CourseGradeCreditType = {
-                    courseName:  courseName,
-                    grade:  grade,
+                    id: index,
+                    courseName: courseName,
+                    grade: grade,
                     credit: credit,
                 }
-                const ResultArray: CourseGradeCreditType[] = prevValue.slice();
+                let ResultArray: CourseGradeCreditType[] = prevValue.slice();
+                const IndexOfResultArray = ResultArray.map((item) => item.id)
+                // Check if index exists, if yes -> remove the object in the array //
+                if (IndexOfResultArray.includes(index)) {
+                    ResultArray = ResultArray.filter(item => item.id !== index)
+                }
                 ResultArray.push(CourseGradeCredits)
+
                 return ResultArray;
             })
         }
-        if(grade && credit && courseName){
+        if (grade && credit && courseName) {
             addCourseIntoArray()
         }
     }, [grade, credit, courseName])
-    
+
 
     return (
         <>

@@ -4,8 +4,8 @@ import { useGPAContext } from '../contexts/gpaContext';
 
 
 export default function ResultSection() {
-    const { gpa}  = useGPAContext();
-
+    const { gpa, arrayOfCourseGradeCredits}  = useGPAContext();
+    
    
     return (
         <Box sx={{ width: "500px", paddingTop: "10px" }}>
